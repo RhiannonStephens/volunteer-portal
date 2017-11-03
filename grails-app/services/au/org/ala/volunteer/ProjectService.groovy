@@ -381,7 +381,7 @@ class ProjectService {
             }
         } else {
             if (projectType) {
-                projectList = Project.findAllByInactiveOrInactiveAndProjectType(false, null, projectType)
+                projectList = Project.findAllByProjectTypeOrInactiveOrInactiveIsNull(projectType, false)
             } else {
                 projectList = Project.findAllByInactiveOrInactive(false, null)
             }
