@@ -36,6 +36,8 @@ class BootStrap {
 
         prepareFrontPage()
 
+        prepareWildlifeSpotter()
+
         preparePickLists()
 
         prepareValidationRules()
@@ -182,6 +184,15 @@ class BootStrap {
 
         FrontPage.metaClass.'static'.getFeaturedProject = {->
             FrontPage.list()[0]?.featuredProject
+        }
+    }
+
+    private void prepareWildlifeSpotter() {
+        if (WildlifeSpotter.instance() == null) {
+            def ws = new WildlifeSpotter()
+            ws.bodyCopy = ''
+
+            ws.save(flush: true, failOnError: true)
         }
     }
 
